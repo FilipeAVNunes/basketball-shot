@@ -5,12 +5,14 @@ body {
 }
 
 button {
+  display: flex;
   font: inherit;
   background-color: gold;
   border: 0cm;
   color: purple;
   font-size: 2em;
   padding: 1em 4.5em;
+  justify-content: ;
 }
 
 h1 {
