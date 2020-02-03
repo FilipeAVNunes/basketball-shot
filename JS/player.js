@@ -1,8 +1,21 @@
-const kobeUrl = '/IMAGES/kobe1.png';
+class Kobe {
+  constructor(game) {
+    this.game = game;
+  }
 
-const kobe = new Image();
-kobe.src = kobeUrl;
+  drawKobe(number) {
+    const kobeUrl = `/IMAGES/kobe${number}.png`;
+    const kobe = new Image();
+    kobe.src = kobeUrl;
 
-kobe.addEventListener('load', () => {
-  context.drawImage(kobe, 300, 230, 60, 60);
-});
+    kobe.addEventListener('load', () => {
+      this.game.context.drawImage(kobe, 300, 230, 60, 60);
+    });
+  }
+
+  paint() {
+    context.save();
+    context.restore();
+  }
+
+}

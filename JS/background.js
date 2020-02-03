@@ -1,13 +1,23 @@
-const imageUrl = '/IMAGES/Basketball Court.H01.2k (1).png';
+class Court {
+  constructor(game) {
+    this.game = game;
+    this.imageUrl = '/IMAGES/Basketball Court.H01.2k (1).png';
+    this.image = new Image();
+  }
 
-const image = new Image();
-image.src = imageUrl;
+  drawCourt() {
+    this.image.src = this.imageUrl;
 
+    this.image.addEventListener('load', () => {
+      const canvasWidth = this.game.canvas.width;
+      const canvasHeight = this.game.canvas.height;
+      this.game.context.drawImage(this.image, -800, 0, 1800, canvasHeight);
+    });
+  }
 
+  paint() {
+    context.save();
 
-image.addEventListener('load', () => {
-  const canvasWidth = context.canvas.width;
-  const canvasHeight = context.canvas.height;
-  context.drawImage(image, -800, 0, 1800, canvasHeight);
-
-});
+    context.restore();
+  }
+}

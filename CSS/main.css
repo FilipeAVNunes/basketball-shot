@@ -31,3 +31,7 @@ aside {
   flex-direction: column;
   justify-content: space-around;
 }
+
+aside p {
+  font-size: smaller;
+}

@@ -1,76 +1,69 @@
-const canvas = document.querySelector('canvas');
-const context = canvas.getContext('2d');
-const intervalWidth = 172;
-context.lineWidth = 5;
-// ------------------------------------shooting bar--------------------------------
-function shootingBar() {
-  context.save();
-  context.beginPath();
-  context.lineWidth = 1;
-  context.fillStyle = 'gold';
-  context.fillRect(98, 439, 705, 53);
-  context.stroke();
-  context.closePath();
-  context.restore();
-}
+class BarOfShooting {
+  constructor(game) {
+    this.game = game;
+    this.posx = 100;
+    this.lineLength = 12;
+    this.speed = 5;
+    this.intervalWidth = 172;
+  }
+  shootingBar() {
+    this.game.context.save();
+    this.game.context.beginPath();
+    this.game.context.lineWidth = 1;
+    this.game.context.fillStyle = 'gold';
+    this.game.context.fillRect(98, 439, 705, 53);
+    this.game.context.stroke();
+    this.game.context.closePath();
+    this.game.context.restore();
+  }
 
-// ----------------------------shooting bar margin-------------------------------------
-function marginShootingBar() {
-  context.save();
-  context.beginPath();
-  context.strokeStyle = 'goldenrod';
-  context.lineWidth = 5;
-  context.strokeRect(98, 438, 705, 55);
-  context.stroke();
-  context.closePath();
-  context.restore();
-}
+  // ----------------------------shooting bar margin-------------------------------------
+  marginShootingBar() {
+    this.game.context.save();
+    this.game.context.beginPath();
+    this.game.context.strokeStyle = 'goldenrod';
+    this.game.context.lineWidth = 5;
+    this.game.context.strokeRect(98, 438, 705, 55);
+    this.game.context.stroke();
+    this.game.context.closePath();
+    this.game.context.restore();
+  }
 
-//------------------------------ interval----------------------------------------
-function shootingInterval() {
-  context.save();
-  context.beginPath();
-  context.strokeStyle = 'purple';
-  context.lineWidth = 5;
-  context.strokeRect(368, 436, intervalWidth, 59);
-  context.stroke();
-  context.closePath();
-  context.restore();
-}
+  //------------------------------ interval----------------------------------------
+  shootingInterval() {
+    this.game.context.save();
+    this.game.context.beginPath();
+    this.game.context.strokeStyle = 'purple';
+    this.game.context.lineWidth = 5;
+    this.game.context.strokeRect(368, 436, this.intervalWidth, 59);
+    this.game.context.stroke();
+    this.game.context.closePath();
+    this.game.context.restore();
+  }
 
-// ----------------------------------shot line ------------------------------------
+  // ----------------------------------shot line ------------------------------------
 
-context.strokeStyle = 'black';
-var posx = 100;
-var lineLength = 12;
-var speed = 3;
+  drawLine() {
+    this.game.context.save();
+    this.game.context.beginPath();
+    this.game.context.strokeStyle = 'black';
+    this.game.context.lineWidth = 4;
+    this.game.context.moveTo(this.posx, 440);
+    this.game.context.lineTo(this.posx, 491);
+    this.game.context.stroke();
+    this.game.context.restore();
+  }
 
-function drawLine() {
-  context.save();
-  context.beginPath();
-  context.lineWidth = 4;
-  context.moveTo(posx, 440);
-  context.lineTo(posx, 491);
-  context.stroke();
-  context.restore();
-}
+  moveLine(timestamp) {
+    this.posx += this.speed;
 
-function moveLine() {
-  posx += speed;
+    if (this.posx < 102 || this.posx > 795) {
+      this.speed = this.speed * -1;
+    }
+  }
 
-  if (posx < 102 || posx > 795) {
-    speed = speed * -1;
+  paint() {
+    this.game.context.save();
+    this.game.context.restore();
   }
 }
-
-function loop() {
-  context.clearRect(98, 438, 705, 55);
-  shootingBar();
-  marginShootingBar();
-  shootingInterval();
-  moveLine();
-  drawLine();
-  requestAnimationFrame(loop);
-}
-
-requestAnimationFrame(loop);
