@@ -5,7 +5,8 @@ class Game {
     this.Kobe = new Kobe(this);
     this.BarOfShooting = new BarOfShooting(this);
     this.Court = new Court(this);
-    this.Ball = new Ball(this);
+    this.ball = new Ball(this);
+    this.shot = false;
     this.setControlBindings();
   }
   setControlBindings() {
@@ -22,11 +23,13 @@ class Game {
     this.context.clearRect(300, 230, 63, 62);
     this.Court.drawCourt();
     this.Kobe.drawKobe(2);
+    this.shot = true;
     const drawNewImage = () => {
       this.context.clearRect(300, 230, 63, 62);
       this.Court.drawCourt();
       this.Kobe.drawKobe(3);
-      this.Ball.drawBall();
+
+      this.ball.drawBall();
     };
     const newImage = setTimeout(drawNewImage, 200);
   }
@@ -45,11 +48,14 @@ class Game {
     this.BarOfShooting.marginShootingBar();
     this.BarOfShooting.shootingInterval();
     this.BarOfShooting.drawLine();
+    //this.ball.drawBall()
   }
 
   loop(timestamp) {
     this.paint();
     this.BarOfShooting.moveLine(timestamp);
+    this.ball.ballMoving();
+    this.ball.drawBall;
     if (this.isRunning) {
       window.requestAnimationFrame(timestamp => {
         this.loop(timestamp);

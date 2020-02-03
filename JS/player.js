@@ -9,7 +9,7 @@ class Kobe {
     kobe.src = kobeUrl;
 
     kobe.addEventListener('load', () => {
-      this.game.context.drawImage(kobe, 300, 230, 60, 60);
+      this.game.context.drawImage(kobe, 280, 190, 60, 60);
     });
   }
 
@@ -17,5 +17,4 @@ class Kobe {
     context.save();
     context.restore();
   }
-
 }
