@@ -8,6 +8,7 @@ class Game {
     this.ball = new Ball(this);
     this.shot = false;
     this.setControlBindings();
+
   }
   setControlBindings() {
     const $buttonStart = document.getElementById('btn-start');
@@ -28,7 +29,7 @@ class Game {
       this.context.clearRect(300, 230, 63, 62);
       this.Court.drawCourt();
       this.Kobe.drawKobe(3);
-
+      this.ball.ballMoving();
       this.ball.drawBall();
     };
     const newImage = setTimeout(drawNewImage, 200);
@@ -54,7 +55,6 @@ class Game {
   loop(timestamp) {
     this.paint();
     this.BarOfShooting.moveLine(timestamp);
-    this.ball.ballMoving();
     this.ball.drawBall;
     if (this.isRunning) {
       window.requestAnimationFrame(timestamp => {
