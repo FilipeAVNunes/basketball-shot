@@ -1,9 +1,10 @@
 class Scoreboard {
   constructor(game) {
     this.game = game;
+    this.$scoreSpan = document.querySelector('h1');
+    this.score = 0  }
 
-    this.$scoreSpan = document.querySelector('h1 span');
+  scoringMachine() {
+    this.$scoreSpan.innerHTML =`Score ${this.score}`;
   }
-
-  paint() {}
 }

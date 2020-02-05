@@ -30,7 +30,7 @@ class Ball {
   }
 
   ballLoop = timestamp => {
-    console.log("ball is running")
+    console.log('ball is running');
     if (this.shotCoordinates.length > 29) {
       this.game.isRunning = false;
       this.game.context.clearRect(0, 0, 1000, 1000);
@@ -43,14 +43,13 @@ class Ball {
         this.shotCoordinates.shift();
       }
 
-      this.ballAnimation = window.requestAnimationFrame(timestamp => this.ballLoop(timestamp))
-
+      this.ballAnimation = window.requestAnimationFrame(timestamp => this.ballLoop(timestamp));
     } else {
       console.log(this.ballAnimation);
       console.log(this);
       window.cancelAnimationFrame(this.ballAnimation);
       delete this.ballAnimation;
-      if (!this.game.isRunning){
+      if (!this.game.isRunning) {
         this.game.isRunning = true;
         this.game.loop();
       }
@@ -71,6 +70,8 @@ class Ball {
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
     this.paintBallMoving();
+    this.game.BarOfShooting.speed *= 1.2;
+    this.game.scoreboard.score += 3;
   }
   ballMissedShort() {
     const a = 1 / 100;
@@ -85,6 +86,7 @@ class Ball {
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
     this.paintBallMoving();
+    this.game.restartGame();
   }
   ballMissedLong() {
     const a = 1 / 135;
@@ -99,6 +101,7 @@ class Ball {
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
     this.paintBallMoving();
+    this.game.restartGame();
   }
 
   /*
