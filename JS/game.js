@@ -69,6 +69,10 @@ class Game {
     this.scoreboard.score = 0;
   }
 
+  gameOver() {
+    
+  }
+
   paint() {
     context.clearRect(98, 438, 705, 55);
     this.BarOfShooting.paint();
