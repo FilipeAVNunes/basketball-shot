@@ -8,18 +8,23 @@ class Game {
     this.ball = new Ball(this);
     this.shot = false;
     this.setControlBindings();
-
   }
   setControlBindings() {
     const $buttonStart = document.getElementById('btn-start');
     const $buttonShoot = document.getElementById('btn-shoot');
+    const $buttonRestart = document.getElementById('btn-restart');
 
     $buttonShoot.addEventListener('click', () => {
       this.shoot();
     });
+
+    $buttonRestart.addEventListener('click', () => {
+      this.startGame();
+    });
   }
 
   shoot() {
+    //HERE WE NEED THE IF STATMENTS TO SEE WHAT FUNCTION OF THE BALL TO RUN
     this.isRunning = !this.isRunning;
     this.context.clearRect(300, 230, 63, 62);
     this.Court.drawCourt();
@@ -29,17 +34,26 @@ class Game {
       this.context.clearRect(300, 230, 63, 62);
       this.Court.drawCourt();
       this.Kobe.drawKobe(3);
-      this.ball.ballMoving();
       this.ball.drawBall();
+      //understand the position of the bar to run one of the three functions
+      if (this.BarOfShooting.posx > 98 && this.BarOfShooting.posx < 400) {
+        this.ball.ballMissedShort();
+      } else if (this.BarOfShooting.posx > 490 && this.BarOfShooting.posx <= 855) {
+        this.ball.ballMissedLong();
+      } else {
+        this.ball.ballScore();
+      }
     };
-    const newImage = setTimeout(drawNewImage, 200);
+    const newImage = setTimeout(drawNewImage, 300);
   }
   startGame() {
     this.Court.drawCourt();
     this.paint();
-    this.isRunning = true;
     this.Kobe.drawKobe(1);
-    this.loop();
+    if(!this.isRunning){
+      this.isRunning = true;
+      this.loop();
+    }
   }
 
   paint() {
@@ -53,6 +67,7 @@ class Game {
   }
 
   loop(timestamp) {
+    console.log("game is running")
     this.paint();
     this.BarOfShooting.moveLine(timestamp);
     this.ball.drawBall;
