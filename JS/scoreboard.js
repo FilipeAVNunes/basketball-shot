@@ -6,6 +6,6 @@ class Scoreboard {
   }
 
   scoringMachine() {
-    this.$scoreSpan.innerHTML = `Score ${this.score}`;
+    this.$scoreSpan.innerHTML = `${this.score} Points `;
   }
 }

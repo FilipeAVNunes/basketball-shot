@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   background: url(/IMAGES/background.png) repeat-x;
   background-color: #3e1d62;
@@ -34,6 +37,7 @@ button:hover {
 }
 
 h1 {
+  color: white;
   display: flex;
   justify-content: center;
 }
@@ -44,7 +48,7 @@ section {
 
 aside {
   display: flex;
-  background: url(/IMAGES/backgroundColorFlipped.png) repeat;
+  background: url(/IMAGES/asidebackgroundcolorflipped.png) repeat;
   background-size: 100%;
   padding: 0 1em;
   flex-direction: column;
