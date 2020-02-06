@@ -6,6 +6,7 @@ class BarOfShooting {
     this.speed = 5;
     this.intervalWidth = 90;
   }
+
   shootingBar() {
     this.game.context.save();
     this.game.context.beginPath();
@@ -54,17 +55,18 @@ class BarOfShooting {
     this.game.context.restore();
   }
 
+  paint() {
+    this.shootingBar();
+    this.marginShootingBar();
+    this.shootingInterval();
+    this.drawLine();
+  }
+
   moveLine(timestamp) {
     this.posx += this.speed;
 
     if (this.posx < 102 || this.posx > 795) {
       this.speed = this.speed * -1;
     }
-  }
-
-  paint() {
-    this.game.context.save();
-
-    this.game.context.restore();
   }
 }

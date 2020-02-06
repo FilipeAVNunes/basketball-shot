@@ -6,55 +6,31 @@ class Ball {
     this.ballSpeed = 20;
     this.timer = 0;
     this.shotCoordinates = [];
-  }
 
-  drawBall() {
-    this.game.context.clearRect(0, 0, 1000, 1000);
-    //this.game.drawCourt();
     const ballUrl = '/IMAGES/Bola.png';
-    const ball = new Image();
-    ball.src = ballUrl;
-    this.game.context.drawImage(ball, this.x, this.y);
+    this.ballImage = new Image();
+    this.ballImage.src = ballUrl;
   }
 
-  paint(x, y) {
-    const ballUrl = '/IMAGES/Bola.png';
-    const ball = new Image();
-    ball.src = ballUrl;
-    this.game.context.drawImage(ball, x, y);
-  }
-
-  paintBallMoving() {
-    //console.log(this.shotCoordinates);
-    this.ballLoop();
-  }
-
-  ballLoop = timestamp => {
-    console.log('ball is running');
+  paint() {
     if (this.shotCoordinates.length > 29) {
-      this.game.isRunning = false;
-      this.game.context.clearRect(0, 0, 1000, 1000);
-      this.game.paint(); //here we are painting the shooting bar
-      this.game.Court.drawCourt();
-      this.game.Kobe.drawKobe(1);
-      if (this.timer < timestamp - this.ballSpeed) {
-        this.timer = timestamp;
-        this.paint(this.shotCoordinates[29][0], this.shotCoordinates[5][1]);
-        this.shotCoordinates.shift();
-      }
-
-      this.ballAnimation = window.requestAnimationFrame(timestamp => this.ballLoop(timestamp));
-    } else {
-      console.log(this.ballAnimation);
-      console.log(this);
-      window.cancelAnimationFrame(this.ballAnimation);
-      delete this.ballAnimation;
-      if (!this.game.isRunning) {
-        this.game.isRunning = true;
-        this.game.loop();
-      }
+      const x = this.shotCoordinates[29][0];
+      const y = this.shotCoordinates[5][1];
+      this.game.context.drawImage(this.ballImage, x, y);
     }
-  };
+  }
+
+  runLogic() {
+    console.log('ball is running');
+    const isMoving = this.shotCoordinates.length > 29;
+    if (isMoving) {
+      this.shotCoordinates.shift();
+    } else {
+      this.game.isRunning = true;
+      this.game.shot = false;
+      // this.game.restartGame();
+    }
+  }
 
   ballScore() {
     //first we need to have a formula and create the array of positions
@@ -69,10 +45,10 @@ class Ball {
       const coordinate = [x, y];
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
-    this.paintBallMoving();
     this.game.BarOfShooting.speed *= 1.2;
     this.game.scoreboard.score += 3;
   }
+
   ballMissedShort() {
     const a = 1 / 100;
     const b = -4;
@@ -85,9 +61,8 @@ class Ball {
       const coordinate = [x, y];
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
-    this.paintBallMoving();
-    this.game.restartGame();
   }
+
   ballMissedLong() {
     const a = 1 / 135;
     const b = -4;
@@ -100,8 +75,6 @@ class Ball {
       const coordinate = [x, y];
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
-    this.paintBallMoving();
-    this.game.restartGame();
   }
 
   /*
