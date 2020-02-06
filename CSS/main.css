@@ -48,7 +48,7 @@ section {
 
 aside {
   display: flex;
-  background: url(/IMAGES/asidebackgroundcolorflipped.png) repeat;
+  background: url(/IMAGES/asidebackgroundcolorflipped.png) no-repeat;
   background-size: 100%;
   padding: 0 1em;
   flex-direction: column;
@@ -56,6 +56,7 @@ aside {
 }
 
 aside p {
+  color: white;
   font-size: smaller;
 }
 
