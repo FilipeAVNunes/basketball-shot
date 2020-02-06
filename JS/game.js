@@ -50,7 +50,8 @@ class Game {
 
   gameover() {
     setTimeout(function() {
-      document.getElementById('canvas').classList.add('hide');
+      document.getElementById('canvas').style.display = 'none';
+      // document.getElementById('canvas').classList.add('hide');
       // document.getElementById('sidebar').classList.add('hide');
       document.getElementById('gameover').classList.remove('hide');
     }, 750);
@@ -60,6 +61,8 @@ class Game {
     // document.getElementById('sidebar').style.display = 'show';
     document.getElementById('canvas').classList.remove('hide');
     document.getElementById('myDIV').style.display = 'none';
+    document.getElementById('canvas').style.display = 'flex';
+
     document.getElementById('score').classList.remove('hide');
     document.getElementById('sidebar').classList.remove('hide');
     this.reset();
