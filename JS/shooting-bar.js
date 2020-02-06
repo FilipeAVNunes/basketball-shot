@@ -34,9 +34,9 @@ class BarOfShooting {
   shootingInterval() {
     this.game.context.save();
     this.game.context.beginPath();
-    this.game.context.strokeStyle = 'purple';
+    this.game.context.strokeStyle = 'rebeccapurple';
     this.game.context.lineWidth = 5;
-    this.game.context.strokeRect(400, 336, this.intervalWidth, 59);
+    this.game.context.strokeRect(400, 337, this.intervalWidth, 57);
     this.game.context.stroke();
     this.game.context.closePath();
     this.game.context.restore();
@@ -47,7 +47,7 @@ class BarOfShooting {
   drawLine() {
     this.game.context.save();
     this.game.context.beginPath();
-    this.game.context.strokeStyle = 'black';
+    this.game.context.strokeStyle = '#3e1d62';
     this.game.context.lineWidth = 4;
     this.game.context.moveTo(this.posx, 340);
     this.game.context.lineTo(this.posx, 391);

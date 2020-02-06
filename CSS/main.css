@@ -10,14 +10,26 @@ button {
   font: inherit;
   background-color: gold;
   border: 0cm;
-  color: purple;
+  color: #3e1d62;
   font-size: 2em;
   padding: 0.3em 1.5em;
 }
 
 #btn-shoot {
+  background-color: transparent;
   display: flex;
   justify-content: center;
+}
+
+#btn-shoot:hover {
+  background-color: #3e1d62;
+}
+
+button:hover {
+  background-color: #3e1d62;
+  box-shadow: 0px 15px 20px rgba(218, 165, 32, 1);
+  color: #fff;
+  transform: translateY(-7px);
 }
 
 h1 {
@@ -31,7 +43,8 @@ section {
 
 aside {
   display: flex;
-  background-color: gold;
+  background: url(/IMAGES/backgroundColorFlipped.png) repeat;
+  background-size: 100%;
   padding: 0 1em;
   flex-direction: column;
   justify-content: space-around;
@@ -78,9 +91,11 @@ aside p {
 }
 
 #gameover h1 {
-  margin-right: 70px;
+  margin-right: 0px;
 }
 
 #gameover img {
-  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  width: 350px;
 }
