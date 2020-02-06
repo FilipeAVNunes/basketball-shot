@@ -77,8 +77,10 @@ class Game {
     this.isRunning = true;
     this.scoreboard.score = 0;
     document.getElementById('canvas').classList.remove('hide');
+    document.getElementById('canvas').style.display = 'flex';
     document.getElementById('gameover').classList.add('hide');
     document.getElementById('sidebar').classList.remove('hide');
+    document.getElementById('sidebar').style.display = 'flex';
   }
 
   clearScreen() {

@@ -1,6 +1,6 @@
 body {
   background: url(/IMAGES/background.png) repeat-x;
-  background-color: #3b1b63;
+  background-color: #3e1d62;
   font-family: 'Sigmar One', cursive;
   font-size: 1.5em;
 }
@@ -84,4 +84,3 @@ aside p {
 #gameover img {
   margin-right: 50px;
 }
-
