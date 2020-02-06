@@ -46,7 +46,20 @@ class Game {
     this.scoreboard = new Scoreboard(this);
   }
 
+  gameover() {
+    setTimeout(function() {
+      document.getElementById('canvas').classList.add('hide');
+      document.getElementById('gameover').classList.remove('notappear');
+      document.getElementById('sidebar').classList.add('notshow');
+    }, 750);
+  }
+
   startGame() {
+    document.getElementById('myDIV').style.display = 'none';
+    document.getElementById('sidebar').style.display = 'show';
+    document.getElementById('score').classList.remove('off');
+    document.getElementById('canvas').classList.remove('hide');
+    document.getElementById('sidebar').classList.remove('notshow');
     this.reset();
     if (!this.isRunning) {
       this.isRunning = true;
@@ -58,6 +71,9 @@ class Game {
     this.reset();
     this.isRunning = true;
     this.scoreboard.score = 0;
+    document.getElementById('canvas').classList.remove('hide');
+    document.getElementById('gameover').classList.add('notappear');
+    document.getElementById('sidebar').classList.remove('notshow');
   }
 
   clearScreen() {

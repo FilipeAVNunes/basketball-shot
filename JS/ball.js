@@ -45,7 +45,7 @@ class Ball {
       const coordinate = [x, y];
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
-    this.game.BarOfShooting.speed *= 1.2;
+    this.game.BarOfShooting.speed *= 1.1;
     this.game.scoreboard.score += 3;
   }
 
@@ -61,6 +61,11 @@ class Ball {
       const coordinate = [x, y];
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
+    this.endGame();
+  }
+
+  endGame() {
+    this.game.gameover();
   }
 
   ballMissedLong() {
@@ -75,6 +80,7 @@ class Ball {
       const coordinate = [x, y];
       this.shotCoordinates = [...this.shotCoordinates, coordinate];
     }
+    this.endGame();
   }
 
   /*
