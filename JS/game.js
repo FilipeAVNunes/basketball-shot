@@ -13,11 +13,13 @@ class Game {
     const $buttonShoot = document.getElementById('btn-shoot');
     const $buttonRestart = document.getElementById('btn-restart');
 
-    $buttonShoot.addEventListener('click', () => {
+    $buttonShoot.addEventListener('click', event => {
+      event.preventDefault();
       this.shoot();
     });
 
-    $buttonRestart.addEventListener('click', () => {
+    $buttonRestart.addEventListener('click', event => {
+      event.preventDefault();
       this.restartGame();
     });
   }
@@ -49,17 +51,17 @@ class Game {
   gameover() {
     setTimeout(function() {
       document.getElementById('canvas').classList.add('hide');
-      document.getElementById('gameover').classList.remove('notappear');
-      document.getElementById('sidebar').classList.add('notshow');
+      // document.getElementById('sidebar').classList.add('hide');
+      document.getElementById('gameover').classList.remove('hide');
     }, 750);
   }
 
   startGame() {
-    document.getElementById('myDIV').style.display = 'none';
-    document.getElementById('sidebar').style.display = 'show';
-    document.getElementById('score').classList.remove('off');
+    // document.getElementById('sidebar').style.display = 'show';
     document.getElementById('canvas').classList.remove('hide');
-    document.getElementById('sidebar').classList.remove('notshow');
+    document.getElementById('myDIV').style.display = 'none';
+    document.getElementById('score').classList.remove('hide');
+    document.getElementById('sidebar').classList.remove('hide');
     this.reset();
     if (!this.isRunning) {
       this.isRunning = true;
@@ -72,8 +74,8 @@ class Game {
     this.isRunning = true;
     this.scoreboard.score = 0;
     document.getElementById('canvas').classList.remove('hide');
-    document.getElementById('gameover').classList.add('notappear');
-    document.getElementById('sidebar').classList.remove('notshow');
+    document.getElementById('gameover').classList.add('hide');
+    document.getElementById('sidebar').classList.remove('hide');
   }
 
   clearScreen() {

@@ -1,5 +1,6 @@
 body {
-  background-color: darkgray;
+  background: url(/IMAGES/background.png) repeat-x;
+  background-color: #3b1b63;
   font-family: 'Sigmar One', cursive;
   font-size: 1.5em;
 }
@@ -48,7 +49,8 @@ aside p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 100px;
+  justify-content: space-around;
+  margin-top: 200px;
 }
 .kobeee {
   margin-left: 50px;
@@ -71,18 +73,6 @@ aside p {
   display: none;
 }
 
-.notshow {
-  display: none;
-}
-
-.notappear {
-  display: none;
-}
-
-.off {
-  display: none;
-}
-
 #gameover {
   margin-left: 475px;
 }
@@ -93,4 +83,7 @@ aside p {
 
 #gameover img {
   margin-right: 50px;
+}
+#canvas {
+  display: flex;
 }

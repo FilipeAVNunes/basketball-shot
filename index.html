@@ -9,24 +9,28 @@
     <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <h1 id="score" class="off">Score: 0</h1>
+    <h1 id="score" class="hide">Score: 0</h1>
     <section>
       <div id="myDIV">
         <button id="btn-start">Start</button>
         <h1 class="kobeee">
-          KOBEEE!!!! <input type="text" name="name" placeholder="Place name for highscores" />
+          KOBEEE!!!!
+          <!--<input type="text" name="name" placeholder="Place name for highscores" /> -->
         </h1>
         <img src="IMAGES/startingIcon.png" />
       </div>
-      <canvas id="canvas" class="hide" width="900" height="500"></canvas>
-      <aside id="sidebar" class="notshow">
-        <button id="btn-shoot">Shoot</button>
-        <p>
-          Press shoot to shoot the ball. Each time you score, the speed of the shooting bar gets
-          higher. You lose if you miss.
-        </p>
-      </aside>
-      <div id="gameover" class="notappear">
+      <div id="canvas" class="hide">
+        <canvas width="900" height="500"></canvas>
+        <aside id="sidebar">
+          <button id="btn-shoot">Shoot</button>
+          <p>
+            Press shoot to shoot the ball. Each time you score, the speed of the shooting bar gets
+            higher. You lose if you miss.
+          </p>
+        </aside>
+      </div>
+
+      <div id="gameover" class="hide">
         <button id="btn-restart">Restart</button>
         <h1>You Lost</h1>
         <img src="/IMAGES/deflatedBall.png" />
