@@ -33,11 +33,28 @@ class Game {
 
     if (positionX >= 99 && positionX < 400) {
       this.ball.ballMissedShort();
+      this.audioBuzzer();
     } else if (positionX > 490 && positionX <= 855) {
       this.ball.ballMissedLong();
+      this.audioBuzzer();
     } else {
       this.ball.ballScore();
+      this.audioSwish();
     }
+  }
+
+  audioSwish() {
+    setTimeout(function() {
+      let audio = new Audio('/AUDIO/Swish.mp3');
+      audio.play();
+    }, 500);
+  }
+
+  audioBuzzer() {
+    setTimeout(function() {
+      let audioBuzzing = new Audio('/AUDIO/Buzzer-SoundBible.com-188422102.mp3');
+      audioBuzzing.play();
+    }, 500);
   }
 
   reset() {
