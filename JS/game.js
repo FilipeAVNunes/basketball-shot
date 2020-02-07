@@ -6,6 +6,8 @@ class Game {
     this.shot = false;
     this.score = 0;
     this.setControlBindings();
+    this.backgroundChants = new Audio('/AUDIO/bball+crowd.mp3');
+    this.backgroundChants.volume = 0.2;
   }
 
   setControlBindings() {
@@ -33,9 +35,11 @@ class Game {
 
     if (positionX >= 99 && positionX < 400) {
       this.ball.ballMissedShort();
+      this.audioBackgroundStop();
       this.audioBuzzer();
     } else if (positionX > 490 && positionX <= 855) {
       this.ball.ballMissedLong();
+      this.audioBackgroundStop();
       this.audioBuzzer();
     } else {
       this.ball.ballScore();
@@ -57,12 +61,28 @@ class Game {
     }, 500);
   }
 
+  audioBackgroundPlay() {
+    this.backgroundChants.loop = true;
+    this.backgroundChants.play();
+  }
+
+  audioBackgroundStop() {
+    this.backgroundChants.pause();
+    let crowdGasp = new Audio('/AUDIO/Blastwave_FX_CrowdGasp_BW.61631.mp3');
+    crowdGasp.play();
+    setTimeout(function() {
+      let youSuck = new Audio('/AUDIO/Crowd-Insult-A2-www.fesliyanstudios.com.mp3');
+      youSuck.play();
+    }, 300);
+  }
+
   reset() {
     this.Kobe = new Kobe(this);
     this.BarOfShooting = new BarOfShooting(this);
     this.Court = new Court(this);
     this.ball = new Ball(this);
     this.scoreboard = new Scoreboard(this);
+    this.audioBackgroundPlay();
   }
 
   gameover() {
@@ -82,6 +102,7 @@ class Game {
 
     document.getElementById('score').classList.remove('hide');
     document.getElementById('sidebar').classList.remove('hide');
+    this.audioBackgroundPlay();
     this.reset();
     if (!this.isRunning) {
       this.isRunning = true;
