@@ -48,6 +48,7 @@ class Game {
   }
 
   audioSwish() {
+    this.kobeeeAudio();
     setTimeout(function() {
       let audio = new Audio('/AUDIO/Swish.mp3');
       audio.play();
@@ -74,6 +75,11 @@ class Game {
       let youSuck = new Audio('/AUDIO/Crowd-Insult-A2-www.fesliyanstudios.com.mp3');
       youSuck.play();
     }, 300);
+  }
+
+  kobeeeAudio() {
+    let kobeee = new Audio('/AUDIO/kobe.mp3');
+    kobeee.play();
   }
 
   reset() {
