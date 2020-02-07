@@ -28,7 +28,7 @@ button {
 }
 
 #btn-shoot:hover {
-  background-color: #3e1d62;
+  background-color: rgba(62, 29, 98, 0.79);
 }
 
 button:hover {
